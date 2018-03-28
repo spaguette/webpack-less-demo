@@ -1,6 +1,6 @@
 # CSS Modules Webpack Demo using preprocessors like Less
 
-A working demo of [CSS Modules], using [Webpack]'s [css-loader] in [module mode]. Insipired by CSS Modules [webpack demo](https://github.com/css-modules/webpack-demo).
+A working demo of [CSS Modules], using [Webpack]'s [css-loader] in [module mode]. Insipired by [CSS Modules Webpack demo].
 
 ## Install dependencies (required step)
 In order to run or build this application, the dependencies need to be installed.
@@ -73,4 +73,4 @@ $ npm run build-prod-windows
 [raw-loader]: https://github.com/webpack/raw-loader
 [babel]: https://babeljs.io
 [node-libs-browser]: https://github.com/webpack/node-libs-browser
-[MIT]: http://markdalgleish.mit-license.org
+[MIT]: https://github.com/spaguette/webpack-less-demo/blob/master/LICENSE
