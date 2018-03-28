@@ -1,3 +1,4 @@
 node_modules
 build
 .editorconfig
+yarn-error.log

@@ -5,14 +5,14 @@
   background: #ccc;
 }
 
-.app {
+%app {
   text-size-adjust: none;
   font-family: helvetica, arial, sans-serif;
   padding: 6px 20px 30px;
 }
 
 .oao {
-  &:extend(.app);
+  @extend %app;
 
   :global { 
     .ubsf_button {
@@ -28,7 +28,7 @@
 }
 
 .default { 
-  &:extend(.app);
+  @extend %app;
 
   :global { 
     .ubsf_button {

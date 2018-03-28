@@ -2,41 +2,65 @@ import React, { Component } from 'react';
 
 import JsCompositionWhitelabelingDemo from './jsCompositionWhitelabeling/JsCompositionWhitelabelingDemo.js';
 
-import styles from './styles.less';
+import lessStyles from './styles.less';
+import scssStyles from './styles.scss';
 import './styles-old.less';
 
-const INITIAL_WHITELABEL_STYLES = styles.oao;
+const WhitelabelStyleNames = {
+    DEFAULT: 'default',
+    OAO: 'oao'
+}
+
+const INITIAL_STATE =  { 
+    preprocessoredStyles: 'less',
+    whiteLabelStylesName: WhitelabelStyleNames.DEFAULT 
+};
 
 export default class App extends Component {
     constructor() {
         super();
 
-        this.state = { whiteLabelStyles: INITIAL_WHITELABEL_STYLES };
+        this.state = INITIAL_STATE;
     }
 
-    handleDeleteWhitelabeling = () => {
-        this.setState({ whiteLabelStyles: styles.default });
+    handleEnableOAOWhitelabeling = () => {
+        this.setState({ whiteLabelStylesName: WhitelabelStyleNames.OAO });
     }
 
-    handleRestoreWhitelabeling = () => {
-        this.setState({ whiteLabelStyles: INITIAL_WHITELABEL_STYLES });
+    handleEnableDefaultWhitelabeling = () => {
+         this.setState({ whiteLabelStylesName: WhitelabelStyleNames.DEFAULT });
+    }
+
+    handleSwitchToLess = () => {
+        this.setState({ preprocessoredStyles: 'less' });
+    }
+
+    handleSwitchToScss = () => {
+        this.setState({ preprocessoredStyles: 'scss' });
     }
 
     render() {
+        const { preprocessoredStyles, whiteLabelStylesName } = this.state;
+
+        const styles = preprocessoredStyles === 'scss' ? scssStyles : lessStyles;
+
         return (
-          <div className={this.state.whiteLabelStyles}>
+          <div className={styles[whiteLabelStylesName]}>
             <div className="ubsf_logo-old">This is a square with old less (global) styles</div>
-            <button onClick={this.handleDeleteWhitelabeling}>Delete whitelabeling</button>
-            <button onClick={this.handleRestoreWhitelabeling}>Restore whitelabeling</button>
+            <br />
+            <span>The current config is <strong><i>{preprocessoredStyles}</i></strong> with <strong><i>{whiteLabelStylesName}</i></strong> white-labeling</span><br />
+            <button onClick={this.handleEnableOAOWhitelabeling}>OAO whitelabeling</button>
+            <button onClick={this.handleEnableDefaultWhitelabeling}>Default whitelabeling</button>
+            <br />
+            <button onClick={this.handleSwitchToLess}>Switch to <i>less</i></button>
+            <button onClick={this.handleSwitchToScss}>Switch to <i>scss</i></button>
             <div className={styles.button} />
-            <h1>CSS Modules Webpack Demo</h1>
+            <h1>CSS Modules Less/Scss Webpack Demo</h1>
+            <p>In CSS Modules, selectors are scoped by default.</p>
 
             <hr className={styles.hr} />
 
             <h2>Js Composition Whitelabeling</h2>
-            <p>In CSS Modules, selectors are scoped by default.</p>
-            <p>The following component uses two classes, <strong>.root</strong> and <strong>.text</strong>, both of which would typically be too vague in a larger project.</p>
-            <p>CSS Module semantics ensure that these <strong>classes are locally scoped</strong> to the component and don't collide with other classes in the global scope.</p>
             <JsCompositionWhitelabelingDemo />
 
             <hr className={styles.hr} />
