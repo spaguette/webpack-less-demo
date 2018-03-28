@@ -1,0 +1,36 @@
+.root {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #777;
+  padding: 0 20px;
+  margin: 0 6px;
+  max-width: 400px;
+}
+
+.text {
+  color: #777;
+  font-size: 24px;
+  font-family: helvetica, arial, sans-serif;
+  font-weight: 600;
+}
+
+.button {
+    height: 100px;
+    display: inline-block;
+
+    &:not(:global(.ubsf_button)) {
+      width: 100px;
+    }
+}
+
+@input-ruleset: { height: 100px; };
+
+.input {
+    @input-ruleset();
+    width: 100px;
+}
+
+.whiteLabeledInput {
+    composes: input from "components/styles.less";
+    @input-ruleset();
+}

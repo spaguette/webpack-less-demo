@@ -1,0 +1,46 @@
+{
+  "name": "webpack-less-demo",
+  "version": "1.0.0",
+  "description": "Working demo of CSS Modules with less, using Webpack's css-loader in module mode with aliases.",
+  "license": "MIT",
+  "homepage": "https://github.com/spaguette/webpack-less-demo",
+  "bugs": {
+    "url": "https://github.com/spaguette/webpack-less-demo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spaguette/webpack-less-demo"
+  },
+  "author": "Artem Rapoport",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build-prod": "NODE_ENV=production webpack --bail",
+    "build-prod-windows": "set NODE_ENV=production&& webpack --bail"
+  },
+  "dependencies": {
+    "autoprefixer": "6.3.6",
+    "babel": "6.5.2",
+    "babel-core": "6.10.4",
+    "babel-loader": "6.2.4",
+    "babel-plugin-transform-runtime": "6.4.3",
+    "babel-polyfill": "6.9.1",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-react": "6.5.0",
+    "babel-preset-stage-0": "6.5.0",
+    "css-loader": "0.15.1",
+    "file-loader": "0.8.4",
+    "less": "2.3.1",
+    "less-loader": "2.2.3",
+    "node-libs-browser": "0.5.0",
+    "postcss-loader": "0.9.1",
+    "raw-loader": "0.5.1",
+    "react": "15.3.2",
+    "react-dom": "15.3.0",
+    "sass-loader": "4.1.1",
+    "style-loader": "0.13.1",
+    "url-loader": "0.5.6",
+    "webpack": "1.9.10",
+    "webpack-dev-server": "1.9.0"
+  }
+}

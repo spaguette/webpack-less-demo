@@ -1,0 +1,41 @@
+.hr {
+  margin: 40px 0;
+  height: 1px;
+  border: 0;
+  background: #ccc;
+}
+
+.app {
+  text-size-adjust: none;
+  font-family: helvetica, arial, sans-serif;
+  padding: 6px 20px 30px;
+}
+
+.oao {
+  &:extend(.app);
+
+  :global { 
+    .ubsf_button {
+  	   background: blue;
+  	   width: 200px;
+    }
+  }
+
+  .input {
+      width: 200px;
+      color: blue;
+  }
+}
+
+.default { 
+  :global { 
+    .ubsf_button {
+  	   background: black;
+    }
+  }
+
+  .input {
+     color: blue;
+  }
+}
+
