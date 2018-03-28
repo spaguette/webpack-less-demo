@@ -1,11 +1,15 @@
-import styles from './styles.less';
+import React, { PropTypes } from 'react';
 
-import React, { Component } from 'react';
+import { CssPreprocessors } from 'constants/CssPreprocessors';
 
-export default class JsCompositionWhitelabeling extends Component {
+import lessStyles from './styles.less';
+import scssStyles from './styles.scss';
 
-  render() {
-  	var isWhiteLabeled = true;
+function JsCompositionWhitelabeling({ preprocessorToUse }) {
+  	const isWhiteLabeled = true;
+
+    const styles = preprocessorToUse === CssPreprocessors.SCSS ? scssStyles : lessStyles;
+
     return (
       <div className={ styles.root }>
       <span>Button: </span><div className={isWhiteLabeled ? 'ubsf_button ' + styles.button : styles.button} />
@@ -14,6 +18,14 @@ export default class JsCompositionWhitelabeling extends Component {
         <p className={ styles.text }>Scoped Selectors</p>
       </div>
     );
-  }
+}
 
+JsCompositionWhitelabeling.propTypes = {
+    preprocessorToUse: PropTypes.oneOf([CssPreprocessors.SCSS, CssPreprocessors.LESS])
 };
+
+JsCompositionWhitelabeling.defaultProps = {
+    preprocessorToUse: CssPreprocessors.LESS
+};
+
+export default JsCompositionWhitelabeling;

@@ -1,24 +1,34 @@
-import JsCompositionWhitelabeling from './index';
+import React, { PropTypes } from 'react';
 
-import React, { Component } from 'react';
+import JsCompositionWhitelabeling from './index';
+import { CssPreprocessors } from 'constants/CssPreprocessors';
 
 import js from '!!raw!./index.js';
-import css from '!!raw!./styles.less';
+import less from '!!raw!./styles.less';
+import scss from '!!raw!./styles.scss';
 import Snippet from 'components/shared/snippet/index.js';
 
-export default class JsCompositionWhitelabelingDemo extends Component {
+function JsCompositionWhitelabelingDemo({ preprocessorToUse }) {
+    const stylesSource = preprocessorToUse === CssPreprocessors.SCSS ? scss : less;
 
-  render() {
     const files = [
       { name: 'index.js', source: js },
-      { name: 'styles.less', source: css }
+      { name: `styles.${preprocessorToUse}`, source: stylesSource }
     ];
 
     return (
       <Snippet files={files}>
-        <JsCompositionWhitelabeling />
+        <JsCompositionWhitelabeling preprocessorToUse={preprocessorToUse} />
       </Snippet>
     );
-  }
+}
 
+JsCompositionWhitelabelingDemo.propTypes = {
+    preprocessorToUse: PropTypes.oneOf([CssPreprocessors.SCSS, CssPreprocessors.LESS])
 };
+
+JsCompositionWhitelabelingDemo.defaultProps = {
+    preprocessorToUse: CssPreprocessors.LESS
+};
+
+export default JsCompositionWhitelabelingDemo;

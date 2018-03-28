@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import JsCompositionWhitelabelingDemo from './jsCompositionWhitelabeling/JsCompositionWhitelabelingDemo.js';
+import JsCompositionWhitelabelingDemo from './jsCompositionWhitelabeling/JsCompositionWhitelabelingDemo';
+import { CssPreprocessors } from 'constants/CssPreprocessors';
 
 import lessStyles from './styles.less';
 import scssStyles from './styles.scss';
@@ -9,18 +10,12 @@ import './styles-old.less';
 const WhitelabelStyleNames = {
     DEFAULT: 'default',
     OAO: 'oao'
-}
-
-const INITIAL_STATE =  { 
-    preprocessoredStyles: 'less',
-    whiteLabelStylesName: WhitelabelStyleNames.DEFAULT 
 };
 
-export default class App extends Component {
-    constructor() {
-        super();
-
-        this.state = INITIAL_STATE;
+class App extends Component {
+    state = { 
+        preprocessoredStyles: CssPreprocessors.LESS,
+        whiteLabelStylesName: WhitelabelStyleNames.DEFAULT 
     }
 
     handleEnableOAOWhitelabeling = () => {
@@ -32,17 +27,17 @@ export default class App extends Component {
     }
 
     handleSwitchToLess = () => {
-        this.setState({ preprocessoredStyles: 'less' });
+        this.setState({ preprocessoredStyles: CssPreprocessors.LESS });
     }
 
     handleSwitchToScss = () => {
-        this.setState({ preprocessoredStyles: 'scss' });
+        this.setState({ preprocessoredStyles: CssPreprocessors.SCSS });
     }
 
     render() {
         const { preprocessoredStyles, whiteLabelStylesName } = this.state;
 
-        const styles = preprocessoredStyles === 'scss' ? scssStyles : lessStyles;
+        const styles = preprocessoredStyles === CssPreprocessors.SCSS ? scssStyles : lessStyles;
 
         return (
           <div className={styles[whiteLabelStylesName]}>
@@ -61,10 +56,12 @@ export default class App extends Component {
             <hr className={styles.hr} />
 
             <h2>Js Composition Whitelabeling</h2>
-            <JsCompositionWhitelabelingDemo />
+            <JsCompositionWhitelabelingDemo preprocessorToUse={preprocessoredStyles}  />
 
             <hr className={styles.hr} />
           </div>
         );
     }
 };
+
+export default App;

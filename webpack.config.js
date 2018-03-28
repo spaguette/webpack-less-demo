@@ -39,7 +39,8 @@ var config = {
     modules: ['./', 'node_modules'],
     modulesDirectories: ['node_modules'],
     alias: { 
-      components: 'src/components/'
+      components: 'src/components/',
+      constants: 'src/constants/',
     },
     extensions: ['', '.js', '.css', '.less']
   }
