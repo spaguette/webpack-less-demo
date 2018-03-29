@@ -2,10 +2,18 @@ var webpack = require('webpack');
 
 var path = require('path');
 var fs = require('fs');
+var StyleLintPlugin = require('stylelint-webpack-plugin');
+var TimeFixPlugin = require('time-fix-plugin');
 var autoprefixer = require('autoprefixer');
 
 var serverHost = 'localhost';
 var serverPort = '8080';
+
+var options = {
+  configFile: './stylelint.config.js',
+  files: ['**/*.less'],
+  fix: true
+};
 
 var config = {
   entry: [
@@ -43,7 +51,15 @@ var config = {
       constants: 'src/constants/',
     },
     extensions: ['', '.js', '.css', '.less']
-  }
+  },
+
+  plugins: [
+    //This TimeFix plugin fixes the webpack watch time. 
+    //It is here just to apply the "fix: true" option of the stylelint 
+    //(otherwise webpack will force it into an infinite loop of checks)
+    new TimeFixPlugin(), 
+    new StyleLintPlugin(options)
+  ]
 };
 
 if (process.env.NODE_ENV === 'production') {
