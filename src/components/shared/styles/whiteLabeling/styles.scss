@@ -1,0 +1,30 @@
+.oao {
+  composes: app from 'components/styles.scss';
+
+  :global { 
+    .ubsf_button {
+  	   background: blue;
+  	   width: 200px;
+    }
+  }
+
+  .input {
+      border-radius: 50%;
+      color: blue;
+  }
+}
+
+.default { 
+  composes: app from 'components/styles.scss';
+
+  :global { 
+    .ubsf_button {
+  	   background: black;
+      width: 150px;
+    }
+  }
+
+  .input {
+     color: grey;
+  }
+}

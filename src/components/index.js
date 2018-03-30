@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 
 import JsCompositionWhitelabelingDemo from './jsCompositionWhitelabeling/JsCompositionWhitelabelingDemo';
+import CssCompositionWhitelabelingDemo from './cssCompositionWhitelabeling/CssCompositionWhitelabelingDemo';
 import { CssPreprocessors } from 'constants/CssPreprocessors';
 
+import whiteLabelLessStyles from 'sharedStyles/whiteLabeling/styles.less';
+import whiteLabelScssStyles from 'sharedStyles/whiteLabeling/styles.scss';
 import lessStyles from './styles.less';
 import scssStyles from './styles.scss';
 import './styles-old.less';
@@ -38,9 +41,10 @@ class App extends Component {
         const { preprocessoredStyles, whiteLabelStylesName } = this.state;
 
         const styles = preprocessoredStyles === CssPreprocessors.SCSS ? scssStyles : lessStyles;
+        const rootStyles = preprocessoredStyles === CssPreprocessors.SCSS ? whiteLabelScssStyles : whiteLabelLessStyles;
 
         return (
-          <div className={styles[whiteLabelStylesName]}>
+          <div className={rootStyles[whiteLabelStylesName]}>
             <div className="ubsf_logo-old">This is a square with old less (global) styles</div>
             <br />
             <span>The current config is <strong><i>{preprocessoredStyles}</i></strong> with <strong><i>{whiteLabelStylesName}</i></strong> white-labeling</span><br />
@@ -55,8 +59,13 @@ class App extends Component {
 
             <hr className={styles.hr} />
 
-            <h2>Js Composition Whitelabeling</h2>
+            <h2>JS Composition Whitelabeling</h2>
             <JsCompositionWhitelabelingDemo preprocessorToUse={preprocessoredStyles}  />
+
+            <hr className={styles.hr} />
+
+            <h2>CSS Composition Whitelabeling</h2>
+            <CssCompositionWhitelabelingDemo preprocessorToUse={preprocessoredStyles}  />
 
             <hr className={styles.hr} />
           </div>

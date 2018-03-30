@@ -1,6 +1,7 @@
 # CSS Modules Webpack Demo using preprocessors like Less
 
 A working demo of [CSS Modules], using [Webpack]'s [css-loader] in [module mode]. Insipired by [CSS Modules Webpack demo].
+**Attention!** This demo uses [stylelint-webpack-plugin] with `fix: true` (only for less files), so it will try to auto-fix them if it finds any errors. If you don't wish to use that, change it to `fix: false` in the `webpack.config.js`.
 
 ## Install dependencies (required step)
 In order to run or build this application, the dependencies need to be installed.
@@ -61,6 +62,7 @@ $ npm run build-prod-windows
 
 [MIT]
 
+[stylelint-webpack-plugin]: https://github.com/webpack-contrib/stylelint-webpack-plugin
 [CSS Modules Webpack demo]: https://github.com/css-modules/webpack-demo
 [CSS Modules]: https://github.com/css-modules/css-modules
 [Webpack]: http://webpack.github.io

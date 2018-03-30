@@ -30,10 +30,10 @@ var config = {
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/, query: { presets: ['react', 'es2015', 'stage-0'] } },
-      { test: /\.css$/, loader: 'style!css-loader?modules&importLoaders=1&localIdentName=ubsf_[name]__[local]___[hash:base64:5]!postcss-loader' },
-      { test: /old\.less$/, loader: 'style!css-loader?importLoaders=2!postcss-loader!less-loader' },
-      { test: /^(?:(?!old\.less).)+\.less$/, loader: 'style!css-loader?modules&importLoaders=2&localIdentName=ubsf_LESS_[folder]__[local]___[hash:base64:5]!postcss-loader!less-loader' },
-      { test: /\.scss$/, loader: 'style!css-loader?modules&importLoaders=2&localIdentName=ubsf_SCSS_[folder]__[local]___[hash:base64:5]!postcss-loader!sass-loader' },
+      { test: /\.css$/, loader: 'style?singleton=true!css-loader?modules&importLoaders=1&localIdentName=ubsf_[name]__[local]___[hash:base64:5]!postcss-loader' },
+      { test: /old\.less$/, loader: 'style?singleton=true!css-loader?importLoaders=2!postcss-loader!less-loader' },
+      { test: /^(?:(?!old\.less).)+\.less$/, loader: 'style?singleton=true!css-loader?modules&importLoaders=2&localIdentName=ubsf_LESS_[folder]__[local]___[hash:base64:5]!postcss-loader!less-loader' },
+      { test: /\.scss$/, loader: 'style?singleton=true!css-loader?modules&importLoaders=2&localIdentName=ubsf_SCSS_[folder]__[local]___[hash:base64:5]!postcss-loader!sass-loader' },
       { test: /\.svg$/, loader: "url-loader?limit=10000&mimetype=image/svg+xml" }
     ]
   },
@@ -48,6 +48,7 @@ var config = {
     modulesDirectories: ['node_modules'],
     alias: { 
       components: 'src/components/',
+      sharedStyles: 'src/components/shared/styles/',
       constants: 'src/constants/',
     },
     extensions: ['', '.js', '.css', '.less']

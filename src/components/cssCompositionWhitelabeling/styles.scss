@@ -1,4 +1,4 @@
-/* This is LESS styles file from cssCompositionWhitelabeling */
+/* This is SCSS styles file from cssCompositionWhitelabeling */
 
 //This contains the styles that are applied both to
 //the whitelabeled and "not-whitelabeled" input.
@@ -16,5 +16,5 @@
 //This contains the styles that are applied to the whitelabeled input using
 //local input className from "common" styles.
 .whiteLabeledInput { 
-    composes: input from "sharedStyles/whiteLabeling/styles.less";
+    composes: input from "sharedStyles/whiteLabeling/styles.scss";
 }

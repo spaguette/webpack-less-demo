@@ -1,14 +1,5 @@
 /* This is LESS styles file from jsCompositionWhitelabeling */
 
-.root {
-  border-width: 2px;
-  border-style: solid;
-  border-color: #777;
-  padding: 0 20px;
-  margin: 0 6px;
-  max-width: 400px;
-}
-
 .text {
   color: #777;
   font-size: 24px;
@@ -19,27 +10,10 @@
 .button {
     height: 100px;
     display: inline-block;
+    border: 1px solid red;
+    cursor: pointer;
 
     &:not(:global(.ubsf_button)) {
       width: 100px;
     }
-}
-
-//This contains the styles that are applied both to
-//the whitelabeled and "not-whitelabeled" input.
-.input,
-.whiteLabeledInput {
-    height: 50px;
-    width: 100px;
-}
-
-//This contains the styles that are applied only to the "not-whitelabeled-input".
-.input { 
-   border-radius: 5px;
-}
-
-//This contains the styles that are applied to the whitelabeled input using
-//local input className from "common" styles.
-.whiteLabeledInput { 
-    composes: input from "components/styles.less";
 }
