@@ -1,4 +1,4 @@
-/* This is LESS styles file from cssCompositionWhitelabeling */
+// This is LESS styles file from cssCompositionWhitelabeling
 
 //This contains the styles that are applied both to
 //the whitelabeled and "not-whitelabeled" input.
@@ -9,12 +9,12 @@
 }
 
 //This contains the styles that are applied only to the "not-whitelabeled-input".
-.input { 
-   border-radius: 5px;
+.input {
+    border-radius: 5px;
 }
 
 //This contains the styles that are applied to the whitelabeled input using
 //local input className from "common" styles.
-.whiteLabeledInput { 
+.whiteLabeledInput {
     composes: input from "sharedStyles/whiteLabeling/styles.less";
 }

@@ -4,7 +4,7 @@
   :global { 
     .ubsf_button {
   	   background: blue;
-  	   width: 200px;
+       border-radius: 50%;
     }
   }
 
@@ -20,7 +20,6 @@
   :global { 
     .ubsf_button {
   	   background: black;
-      width: 150px;
     }
   }
 

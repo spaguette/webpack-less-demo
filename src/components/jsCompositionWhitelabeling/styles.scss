@@ -1,4 +1,4 @@
-/* This is SCSS styles file from jsCompositionWhitelabeling */
+// This is SCSS styles file from jsCompositionWhitelabeling
 
 .text {
   color: #777;
@@ -11,9 +11,10 @@
     height: 100px;
     display: inline-block;
     border: 1px solid red;
-     cursor: pointer;
+    cursor: pointer;
+    width: 100px;
 
     &:not(:global(.ubsf_button)) {
-      width: 100px;
+      border-radius: 5px;
     }
 }

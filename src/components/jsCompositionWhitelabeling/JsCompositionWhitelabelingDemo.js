@@ -1,25 +1,25 @@
-import React, { PropTypes } from 'react';
+import React, {PropTypes} from 'react';
 
 import JsCompositionWhitelabeling from './index';
-import { CssPreprocessors } from 'constants/CssPreprocessors';
+import {CssPreprocessors} from 'constants/CssPreprocessors';
 
 import js from '!!raw!./index.js';
 import less from '!!raw!./styles.less';
 import scss from '!!raw!./styles.scss';
 import Snippet from 'components/shared/snippet/index.js';
 
-function JsCompositionWhitelabelingDemo({ preprocessorToUse }) {
+function JsCompositionWhitelabelingDemo({preprocessorToUse}) {
     const stylesSource = preprocessorToUse === CssPreprocessors.SCSS ? scss : less;
 
     const files = [
-      { name: 'index.js', source: js },
-      { name: `styles.${preprocessorToUse}`, source: stylesSource }
+        { name: 'index.js', source: js },
+        { name: `styles.${preprocessorToUse}`, source: stylesSource }
     ];
 
     return (
-      <Snippet files={files}>
-        <JsCompositionWhitelabeling preprocessorToUse={preprocessorToUse} />
-      </Snippet>
+        <Snippet files={files}>
+            <JsCompositionWhitelabeling preprocessorToUse={preprocessorToUse} />
+        </Snippet>
     );
 }
 
