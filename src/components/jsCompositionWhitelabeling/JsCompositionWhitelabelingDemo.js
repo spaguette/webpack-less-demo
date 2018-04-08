@@ -3,9 +3,9 @@ import React, {PropTypes} from 'react';
 import JsCompositionWhitelabeling from './index';
 import {CssPreprocessors} from 'constants/CssPreprocessors';
 
-import js from '!!raw!./index.js';
-import less from '!!raw!./styles.less';
-import scss from '!!raw!./styles.scss';
+import js from '!!raw-loader!./index.js';
+import less from '!!raw-loader!./styles.less';
+import scss from '!!raw-loader!./styles.scss';
 import Snippet from 'components/shared/snippet/index.js';
 
 function JsCompositionWhitelabelingDemo({preprocessorToUse}) {

@@ -19,7 +19,7 @@ added max nesting level: 3, "composes" rule is placed 1st in order and deleted t
 
 ## Install dependencies (required step)
 In order to run or build this application, the dependencies need to be installed.
-First, install [Node.js](https://nodejs.org/en/), then install [yarn](https://yarnpkg.com/lang/en/docs/install/). (The latter is optional but recommended. Using LTS version in both should work, otherwise use `Node.js` v8.10.0 and `yarn` v1.2.1)
+First, install [Node.js](https://nodejs.org/en/), then install [yarn](https://yarnpkg.com/lang/en/docs/install/). (The latter is optional but recommended. Using LTS version in both should work, otherwise use `Node.js` v6.14.1 and `yarn` v1.2.1)
 
 ### Using `yarn` (recommended)
 

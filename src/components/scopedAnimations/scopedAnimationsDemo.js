@@ -2,9 +2,9 @@ import React from 'react';
 
 import ScopedAnimations from './index';
 import Snippet from 'components/shared/snippet/index';
-import js from '!!raw!./index.js';
-import less from '!!raw!./styles.less';
-import animationsCss from '!!raw!sharedStyles/animation/styles.css';
+import js from '!!raw-loader!./index.js';
+import less from '!!raw-loader!./styles.less';
+import animationsCss from '!!raw-loader!sharedStyles/animation/styles.css';
 
 const files = [
     { name: 'index.js', source: js },
