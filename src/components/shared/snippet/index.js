@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './styles.css';
 
@@ -21,5 +22,10 @@ function Snippet({ files, children }) {
       </div>
     );
 }
+
+Snippet.propTypes = {
+    files: PropTypes.array,
+    children: PropTypes.any
+};
 
 export default Snippet;

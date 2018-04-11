@@ -15,6 +15,17 @@ var styleLintOptions = {
 };
 
 var config = commonConfig;
+var newRules = [{
+    enforce: 'pre',
+    test: /\.js$/,
+    exclude: /node_modules/,
+    loader: 'eslint-loader',
+    options: {
+        fix: true
+    }
+}];
+
+config.module.rules = newRules.concat(config.module.rules);
 config.entry = [
     'webpack-dev-server/client?http://' + serverHost + ':' + serverPort,
     './src/index.js'
