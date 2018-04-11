@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import jss from 'jss';
+import { hot } from 'react-hot-loader';
 
 import JsCompositionWhitelabelingDemo from './jsCompositionWhitelabeling/JsCompositionWhitelabelingDemo';
 import CssCompositionWhitelabelingDemo from './cssCompositionWhitelabeling/CssCompositionWhitelabelingDemo';
@@ -110,4 +111,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default hot(module)(App);

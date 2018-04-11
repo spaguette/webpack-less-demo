@@ -13,10 +13,7 @@ var config = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['react', 'es2015', 'stage-0']
-                }
+                exclude: /node_modules/
             },
             {
                 test: /\.css$/,

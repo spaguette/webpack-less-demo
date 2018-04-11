@@ -47,29 +47,16 @@ $ npm start
 Then go to [http://localhost:8080](http://localhost:8080) and see the result.
 
 ## Build the bundle (optional)
-### *Unix/Linux*: Using `yarn` (recommended)
+### Using `yarn` (recommended)
 
 ```bash
 $ yarn run build-prod
 ```
 
-### *Unix/Linux*: Using `npm`
+### Using `npm`
 
 ```bash
 $ npm run build-prod
-```
-
-
-### *Windows*: Using `yarn` (recommended)
-
-```bash
-$ yarn run build-prod-windows
-```
-
-### *Windows*: Using `npm`
-
-```bash
-$ npm run build-prod-windows
 ```
 
 ## License
