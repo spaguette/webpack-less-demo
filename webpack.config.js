@@ -27,7 +27,7 @@ var config = {
                         options: {
                             modules: true,
                             importLoaders: 1,
-                            localIdentName: 'ubsf_[name]__[local]___[hash:base64:5]'
+                            localIdentName: 'ubsf_[folder]__[local]___[hash:base64:5]'
                         }
                     },
                     { loader: 'postcss-loader' }

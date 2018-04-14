@@ -1,4 +1,3 @@
-process.chdir(__dirname);
 const path = require('path');
 
 module.exports = {
@@ -12,7 +11,8 @@ module.exports = {
     },
     env: {
         browser: true,
-        node: true
+        node: true,
+        jest: true
     },
     rules: {
         semi: ['error', 'always'],
@@ -26,7 +26,10 @@ module.exports = {
             }
         }
     },
-    extends: ['eslint:recommended', 'plugin:react/recommended'],
+    extends: [
+        'eslint:recommended',
+        'plugin:react/recommended'
+    ],
     plugins: [
         'import',
         'react'

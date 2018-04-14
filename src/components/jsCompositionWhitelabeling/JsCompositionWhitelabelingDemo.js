@@ -9,7 +9,7 @@ import less from '!!raw-loader!./styles.less';
 import scss from '!!raw-loader!./styles.scss';
 import Snippet from 'components/shared/snippet/index.js';
 
-function JsCompositionWhitelabelingDemo({preprocessorToUse}) {
+function JsCompositionWhitelabelingDemo({ preprocessorToUse }) {
     const stylesSource = preprocessorToUse === CssPreprocessors.SCSS ? scss : less;
 
     const files = [

@@ -24,61 +24,82 @@ const CustomColors = {
     INPUT_TEXT: '#fff300'
 };
 
-const jssStyles = {
-    ubsf_button: {
-        'background-color': CustomColors.BUTTON_BG
-    },
-    [whiteLabelLessStyles.input]: {
-        color: CustomColors.INPUT_TEXT
-    }
-};
+function getStyles(preprocessor) {
+    return preprocessor === CssPreprocessors.SCSS ? scssStyles : lessStyles;
+}
+
+function getWhitelabelStyles(preprocessor) {
+    return preprocessor === CssPreprocessors.SCSS ? whiteLabelScssStyles : whiteLabelLessStyles;
+}
+
+function getJssStyles(preprocessor) {
+    return {
+        'ubsf_button': {
+            'background-color': CustomColors.BUTTON_BG
+        },
+        [getWhitelabelStyles(preprocessor).input]: {
+            color: CustomColors.INPUT_TEXT
+        }
+    };
+}
 
 class App extends Component {
-    constructor() {
-        super();
-
-        jss.setup({createGenerateClassName: () => rule => rule.key}); //do this to disable jss classNames scoping
-        this._jssSheet = jss.createStyleSheet(jssStyles);
-    }
+    _lessJssSheet = jss.createStyleSheet(getJssStyles(CssPreprocessors.LESS))
+    _scssJssSheet = jss.createStyleSheet(getJssStyles(CssPreprocessors.SCSS))
 
     state = {
         preprocessedStyles: CssPreprocessors.LESS,
-        whiteLabelStylesName: WhitelabelStyleNames.DEFAULT,
-        hasCustomWhitelabeling: false,
+        whiteLabelStylesName: WhitelabelStyleNames.DEFAULT
+    }
+
+    detachJssSheet = () => {
+        if (this.state.whiteLabelStylesName === WhitelabelStyleNames.CUSTOM) {
+            this.getJssSheet().detach();
+        }
+    }
+
+    attachJssSheet = () => {
+        if (this.state.whiteLabelStylesName === WhitelabelStyleNames.CUSTOM) {
+            this.getJssSheet().attach();
+        }
+    }
+
+    getJssSheet = () => {
+        return this.state.preprocessedStyles === CssPreprocessors.SCSS ? this._scssJssSheet : this._lessJssSheet;
     }
 
     handleEnableOAOWhitelabeling = () => {
-        this._jssSheet.detach();
-        this.setState({ whiteLabelStylesName: WhitelabelStyleNames.OAO, hasCustomWhitelabeling: false });
+        this.detachJssSheet();
+        this.setState({ whiteLabelStylesName: WhitelabelStyleNames.OAO });
     }
 
     handleEnableDefaultWhitelabeling = () => {
-        this._jssSheet.detach();
-        this.setState({ whiteLabelStylesName: WhitelabelStyleNames.DEFAULT, hasCustomWhitelabeling: false });
+        this.detachJssSheet();
+        this.setState({ whiteLabelStylesName: WhitelabelStyleNames.DEFAULT });
     }
 
     handleEnableCustomWhitelabeling = () => {
-        this._jssSheet.attach();
-        this.setState({ whiteLabelStylesName: WhitelabelStyleNames.CUSTOM, hasCustomWhitelabeling: true });
+        this.setState({ whiteLabelStylesName: WhitelabelStyleNames.CUSTOM }, () => {this.attachJssSheet();});
     }
 
     handleSwitchToLess = () => {
-        this.setState({ preprocessedStyles: CssPreprocessors.LESS });
+        this.detachJssSheet();
+        this.setState({ preprocessedStyles: CssPreprocessors.LESS }, () => {this.attachJssSheet();});
     }
 
     handleSwitchToScss = () => {
-        this.setState({ preprocessedStyles: CssPreprocessors.SCSS });
+        this.detachJssSheet();
+        this.setState({ preprocessedStyles: CssPreprocessors.SCSS }, () => {this.attachJssSheet();});
     }
 
     render() {
-        const { preprocessedStyles, whiteLabelStylesName, hasCustomWhitelabeling } = this.state;
+        const { preprocessedStyles, whiteLabelStylesName } = this.state;
 
-        const styles = preprocessedStyles === CssPreprocessors.SCSS ? scssStyles : lessStyles;
-        const rootStyles = preprocessedStyles === CssPreprocessors.SCSS ? whiteLabelScssStyles : whiteLabelLessStyles;
-        const rootClass = hasCustomWhitelabeling ? styles.app : rootStyles[whiteLabelStylesName];
+        const styles = getStyles(preprocessedStyles);
+        const rootStyles = getWhitelabelStyles(preprocessedStyles);
 
         return (
-            <div className={rootClass}>
+            <div className={rootStyles[whiteLabelStylesName]}>
                 <div className="ubsf_logo-old">This is a square with old less (global) styles</div>
                 <br />
                 <span>The current config is <strong><i>{preprocessedStyles}</i></strong> with <strong><i>{whiteLabelStylesName}</i></strong> white-labeling</span><br />

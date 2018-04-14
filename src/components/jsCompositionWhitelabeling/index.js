@@ -7,7 +7,7 @@ import sharedStyles from 'sharedStyles/layout/styles.css';
 import lessStyles from './styles.less';
 import scssStyles from './styles.scss';
 
-function JsCompositionWhitelabeling({preprocessorToUse}) {
+function JsCompositionWhitelabeling({ preprocessorToUse }) {
     const styles = preprocessorToUse === CssPreprocessors.SCSS ? scssStyles : lessStyles;
 
     return (

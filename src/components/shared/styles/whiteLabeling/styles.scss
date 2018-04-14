@@ -27,3 +27,7 @@
      color: grey;
   }
 }
+
+.custom {
+  composes: app from "components/styles.scss";
+}
