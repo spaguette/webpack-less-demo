@@ -7,7 +7,7 @@ import CssCompositionWhitelabelingDemo from './cssCompositionWhitelabeling/CssCo
 import {CssPreprocessors} from 'constants/CssPreprocessors';
 import ScopedAnimationsDemo from './scopedAnimations/scopedAnimationsDemo';
 
-import whiteLabelLessStyles from 'sharedStyles/whiteLabeling/styles.less';
+import whiteLabelLessStyles from 'sharedStyles/whiteLabeling/index.less';
 import whiteLabelScssStyles from 'sharedStyles/whiteLabeling/styles.scss';
 import lessStyles from './styles.less';
 import scssStyles from './styles.scss';
