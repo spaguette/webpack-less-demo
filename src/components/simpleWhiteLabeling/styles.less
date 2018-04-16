@@ -1,0 +1,33 @@
+
+@import "~sharedStyles/ui/styles";
+
+.demoBox {
+    composes: demoBox from "sharedStyles/whiteLabeling/index.less";
+
+    background-color: #e55312;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    padding: 15px 30px;
+    width: 500px;
+}
+
+.boxTitle {
+    composes: boxTitle from "sharedStyles/whiteLabeling/index.less";
+
+    color: #d4dee9;
+}
+
+.boxDescription {
+    composes: boxDescription from "sharedStyles/whiteLabeling/index.less";
+
+    color: #e9d062;
+    line-height: 20px;
+}
+
+.boxButton {
+    .uberallButton();
+    composes: boxButton from "sharedStyles/whiteLabeling/index.less";
+
+    width: 100px;
+}
