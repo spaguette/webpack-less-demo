@@ -1,6 +1,6 @@
-var path = require('path');
+const path = require('path');
 
-var config = {
+const config = {
     entry: './src/index.js',
     output: {
         path: path.join(__dirname, 'build'),
@@ -17,7 +17,7 @@ var config = {
             },
             {
                 test: /\.css$/,
-                loaders: [
+                use: [
                     {
                         loader: 'style-loader',
                         options: { singleton: true }
@@ -26,6 +26,7 @@ var config = {
                         loader: 'css-loader',
                         options: {
                             modules: true,
+                            minimize: process.env.NODE_ENV === 'production',
                             importLoaders: 1,
                             localIdentName: 'ubsf_[folder]__[local]___[hash:base64:5]'
                         }
@@ -35,14 +36,17 @@ var config = {
             },
             {
                 test: /old\.less$/,
-                loaders: [
+                use: [
                     {
                         loader: 'style-loader',
                         options: { singleton: true }
                     },
                     {
                         loader: 'css-loader',
-                        options: { importLoaders: 2 }
+                        options: {
+                            importLoaders: 2,
+                            minimize: process.env.NODE_ENV === 'production'
+                        }
                     },
                     { loader: 'postcss-loader' },
                     { loader: 'less-loader' }
@@ -59,6 +63,7 @@ var config = {
                         loader: 'css-loader',
                         options: {
                             modules: true,
+                            minimize: process.env.NODE_ENV === 'production',
                             importLoaders: 2,
                             localIdentName: 'ubsf_LESS_[folder]__[local]___[hash:base64:5]'
                         }
@@ -78,6 +83,7 @@ var config = {
                         loader: 'css-loader',
                         options: {
                             modules: true,
+                            minimize: process.env.NODE_ENV === 'production',
                             importLoaders: 2,
                             localIdentName: 'ubsf_SCSS_[folder]__[local]___[hash:base64:5]'
                         }
@@ -95,7 +101,12 @@ var config = {
             sharedStyles: path.resolve(__dirname, 'src/components/shared/styles/'),
             constants: path.resolve(__dirname, 'src/constants/')
         },
-        extensions: ['*', '.js', '.css', '.less']
+        extensions: ['.js', '.css', '.less']
+    },
+
+    performance: {
+        maxEntrypointSize: 300000,
+        maxAssetSize: 300000
     }
 };
 

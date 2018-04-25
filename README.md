@@ -36,7 +36,7 @@ $ npm install
 ### Using `yarn` (recommended)
 
 ```bash
-$ yarn run start
+$ yarn start
 ```
 
 ### Using `npm`
@@ -50,7 +50,7 @@ Then go to [http://localhost:8080](http://localhost:8080) and see the result.
 ### Using `yarn` (recommended)
 
 ```bash
-$ yarn run build-prod
+$ yarn build-prod
 ```
 
 ### Using `npm`
