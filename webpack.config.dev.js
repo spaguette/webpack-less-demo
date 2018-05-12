@@ -15,7 +15,8 @@ const styleLintOptions = {
 };
 
 const config = commonConfig;
-const newRules = [{
+
+const eslintLoaderConfig = {
     enforce: 'pre',
     test: /\.js$/,
     exclude: /node_modules/,
@@ -23,10 +24,10 @@ const newRules = [{
     options: {
         fix: true
     }
-}];
+};
 
 if (process.env.NODE_ENV === 'local') {
-    config.module.rules = newRules.concat(config.module.rules);
+    config.module.rules.unshift(eslintLoaderConfig);
     config.entry = [
         'webpack-dev-server/client?http://' + serverHost + ':' + serverPort,
         './src/index.js'
