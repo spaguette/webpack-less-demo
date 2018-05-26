@@ -4,9 +4,6 @@ const commonConfig = require('./webpack.config.js');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const TimeFixPlugin = require('time-fix-plugin');
 
-const serverHost = 'localhost';
-const serverPort = '8080';
-
 const styleLintOptions = {
     configFile: './stylelint.config.js',
     files: ['**/*.less'],
@@ -28,17 +25,13 @@ const eslintLoaderConfig = {
 
 if (process.env.NODE_ENV === 'local') {
     config.module.rules.unshift(eslintLoaderConfig);
-    config.entry = [
-        'webpack-dev-server/client?http://' + serverHost + ':' + serverPort,
-        './src/index.js'
-    ];
+    config.output.publicPath = '/build/';
     config.plugins = [
         //This TimeFix plugin fixes the webpack watch time.
         //It is here just to apply the "fix: true" option of the stylelint
         //(otherwise webpack will force it into an infinite loop of checks)
         new TimeFixPlugin(),
         new StyleLintPlugin(styleLintOptions),
-        new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ];
 }
