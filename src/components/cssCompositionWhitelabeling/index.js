@@ -1,30 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-import {CssPreprocessors} from 'constants/CssPreprocessors';
 
 import sharedStyles from 'sharedStyles/layout/styles.css';
-import lessStyles from './styles.less';
-import scssStyles from './styles.scss';
+import styles from './styles.less';
 
-function CssCompositionWhitelabeling({ preprocessorToUse }) {
-    const styles = preprocessorToUse === CssPreprocessors.SCSS ? scssStyles : lessStyles;
-
+function CssCompositionWhitelabeling() {
     return (
-        <div className={sharedStyles.demoBox}>
+        <div className={sharedStyles.demoBox}>{/*eslint-disable-line css-modules/no-undef-class*/}
             <span>Whitelabeled Input: </span><input className={styles.whiteLabeledInput} />
             <br /><br />
             <span>Not Whitelabeled Input: </span><input className={styles.input} />
         </div>
     );
 }
-
-CssCompositionWhitelabeling.propTypes = {
-    preprocessorToUse: PropTypes.oneOf([CssPreprocessors.SCSS, CssPreprocessors.LESS])
-};
-
-CssCompositionWhitelabeling.defaultProps = {
-    preprocessorToUse: CssPreprocessors.LESS
-};
 
 export default CssCompositionWhitelabeling;

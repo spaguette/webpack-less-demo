@@ -27,7 +27,7 @@ const config = {
                             modules: true,
                             minimize: process.env.NODE_ENV === 'production',
                             importLoaders: 1,
-                            localIdentName: 'ubsf_[folder]__[local]___[hash:base64:5]'
+                            localIdentName: 'pref_[folder]__[local]___[hash:base64:5]'
                         }
                     },
                     { loader: 'postcss-loader' }
@@ -64,31 +64,11 @@ const config = {
                             modules: true,
                             minimize: process.env.NODE_ENV === 'production',
                             importLoaders: 2,
-                            localIdentName: 'ubsf_LESS_[folder]__[local]___[hash:base64:5]'
+                            localIdentName: 'pref_LESS_[folder]__[local]___[hash:base64:5]'
                         }
                     },
                     { loader: 'postcss-loader' },
                     { loader: 'less-loader' }
-                ]
-            },
-            {
-                test: /\.scss$/,
-                loaders: [
-                    {
-                        loader: 'style-loader',
-                        options: { singleton: true }
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            minimize: process.env.NODE_ENV === 'production',
-                            importLoaders: 2,
-                            localIdentName: 'ubsf_SCSS_[folder]__[local]___[hash:base64:5]'
-                        }
-                    },
-                    { loader: 'postcss-loader' },
-                    { loader: 'sass-loader' }
                 ]
             }
         ]

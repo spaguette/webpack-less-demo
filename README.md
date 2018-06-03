@@ -1,8 +1,6 @@
 # CSS Modules Webpack Demo using preprocessors like Less
 
 A working demo of [CSS Modules], using [Webpack]'s [css-loader] in [module mode]. Inspired by [CSS Modules Webpack demo].
-Scss (sass) is used along with the less just to show that they can work together (in the same build)! The styles there
-are copied, so it does not carry any logic b/w the preprocessors.
 
 **Attention!** This demo uses [stylelint-webpack-plugin] with `fix: true` (only for less files which don't end with "old.less"),
 so it will try to auto-fix them if it finds any errors.
@@ -76,5 +74,4 @@ $ npm run build-prod
 [file-loader]: https://github.com/webpack/file-loader
 [raw-loader]: https://github.com/webpack/raw-loader
 [babel]: https://babeljs.io
-[node-libs-browser]: https://github.com/webpack/node-libs-browser
 [MIT]: https://github.com/spaguette/webpack-less-demo/blob/master/LICENSE

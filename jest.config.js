@@ -3,7 +3,7 @@ module.exports = {
     moduleDirectories: ['node_modules'],
     moduleNameMapper: {
         /* CSS Modules */
-        '\\.(css|less|scss)$': 'identity-obj-proxy',
+        '\\.(css|less)$': 'identity-obj-proxy',
 
         /* Aliases from webpack */
         '^components(.*)$': '<rootDir>/src/components/$1',

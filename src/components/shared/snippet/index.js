@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 
 import styles from './styles.css';
 
-function Snippet({ files, children }) {
+function Snippet({ files, children, title }) {
     return (
         <div className={styles.root}>
+            <hr className={styles.hr} />
+            <h2>{title}</h2>
             <div className={styles.output}>
                 <div className={styles.fileName}>Output</div>
                 <div className={styles.outputContent}>{children}</div>
@@ -21,6 +23,7 @@ function Snippet({ files, children }) {
 }
 
 Snippet.propTypes = {
+    title: PropTypes.string,
     files: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string,
         source: PropTypes.string

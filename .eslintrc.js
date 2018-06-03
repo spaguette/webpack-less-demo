@@ -28,10 +28,12 @@ module.exports = {
     },
     extends: [
         'eslint:recommended',
-        'plugin:react/recommended'
+        'plugin:react/recommended',
+        'plugin:css-modules/recommended'
     ],
     plugins: [
         'import',
-        'react'
+        'react',
+        'css-modules'
     ]
 };
