@@ -1,68 +1,71 @@
 import React, { Component } from 'react';
 import jss from 'jss';
+import autobind from 'autobind-decorator';
 import { hot } from 'react-hot-loader';
 
-import JsCompositionWhitelabelingDemo from './jsCompositionWhitelabeling/JsCompositionWhitelabelingDemo';
-import CssCompositionWhitelabelingDemo from './cssCompositionWhitelabeling/CssCompositionWhitelabelingDemo';
+import JsCompositionThemingDemo from './jsCompositionTheming/JsCompositionThemingDemo';
+import CssCompositionThemingDemo from './cssCompositionTheming/CssCompositionThemingDemo';
 import ScopedAnimationsDemo from './scopedAnimations/scopedAnimationsDemo';
-import { jssStyles, WhitelabelStyleNames } from 'constants';
+import { jssStyles, ThemeName } from 'constants';
 
-import whiteLabelStyles from 'sharedStyles/whiteLabeling/index.less';
+import themeStyles from 'sharedStyles/themes/index.less';
 import './styles-old.less';
 
+@hot(module)
 class App extends Component {
     _jssSheet = jss.createStyleSheet(jssStyles)
 
-    state = {
-        whiteLabelStylesName: WhitelabelStyleNames.DEFAULT
+    state = { stylesName: ThemeName.DEFAULT }
+
+    get isCustomThemed() {
+        return this.state.stylesName === ThemeName.CUSTOM;
     }
 
-    detachJssSheet = () => {
-        if (this.state.whiteLabelStylesName === WhitelabelStyleNames.CUSTOM) {
-            this._jssSheet.detach();
-        }
+    detachJssSheet() {
+        this.isCustomThemed && this._jssSheet.detach();
     }
 
-    attachJssSheet = () => {
-        if (this.state.whiteLabelStylesName === WhitelabelStyleNames.CUSTOM) {
-            this._jssSheet.attach();
-        }
+    attachJssSheet() {
+        this.isCustomThemed && this._jssSheet.attach();
     }
 
-    handleEnableOAOWhitelabeling = () => {
+    @autobind
+    handleBlueThemeClick() {
         this.detachJssSheet();
-        this.setState({ whiteLabelStylesName: WhitelabelStyleNames.OAO });
+        this.setState({ stylesName: ThemeName.BLUE });
     }
 
-    handleEnableDefaultWhitelabeling = () => {
+    @autobind
+    handleDefaultThemeClick() {
         this.detachJssSheet();
-        this.setState({ whiteLabelStylesName: WhitelabelStyleNames.DEFAULT });
+        this.setState({ stylesName: ThemeName.DEFAULT });
     }
 
-    handleEnableCustomWhitelabeling = () => {
-        this.setState({ whiteLabelStylesName: WhitelabelStyleNames.CUSTOM }, () => {this.attachJssSheet();});
+    @autobind
+    handleCustomThemeClick() {
+        this.setState({ stylesName: ThemeName.CUSTOM }, this.attachJssSheet);
     }
 
     render() {
-        const { whiteLabelStylesName } = this.state;
+        const { stylesName } = this.state;
 
         return (
-            <div className={whiteLabelStyles[whiteLabelStylesName]}>
+            <div className={themeStyles[stylesName]}>
                 <div className="pref_logo-old">This is a square with old less (global) styles</div>
                 <br />
-                <span>The current config is <strong><i>{whiteLabelStylesName}</i></strong> white-labeling</span><br />
-                <button onClick={this.handleEnableOAOWhitelabeling}>OAO whitelabeling</button>
-                <button onClick={this.handleEnableCustomWhitelabeling}>Custom whitelabeling (jss)</button>
-                <button onClick={this.handleEnableDefaultWhitelabeling}>Default whitelabeling</button>
+                <span>The current config is <strong><i>{stylesName}</i></strong> theme</span><br />
+                <button onClick={this.handleBlueThemeClick}>Blue theme</button>
+                <button onClick={this.handleDefaultThemeClick}>Custom theme (jss)</button>
+                <button onClick={this.handleCustomThemeClick}>Default theme</button>
                 <br />
                 <h1>CSS Modules Less/Scss Webpack Demo</h1>
                 <p>In CSS Modules, selectors are scoped by default.</p>
-                <JsCompositionWhitelabelingDemo title="JS Composition Whitelabeling" />
-                <CssCompositionWhitelabelingDemo title="CSS Composition Whitelabeling" />
+                <JsCompositionThemingDemo title="JS Composition Theming" />
+                <CssCompositionThemingDemo title="CSS Composition Theming" />
                 <ScopedAnimationsDemo title="Scoped Animations" />
             </div>
         );
     }
 }
 
-export default hot(module)(App);
+export default App;

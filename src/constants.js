@@ -1,26 +1,26 @@
-import whiteLabelStyles from 'sharedStyles/whiteLabeling/index.less';
+import themeStyles from 'sharedStyles/themes/index.less';
 
-const WhitelabelStyleNames = {
+const ThemeName = {
     DEFAULT: 'default',
-    OAO: 'oao',
+    BLUE: 'blue',
     CUSTOM: 'custom'
 };
 
-const CustomColors = {
+const CustomColor = {
     BUTTON_BG: '#fef000',
     INPUT_TEXT: '#fff300'
 };
 
 const jssStyles = {
     'pref_button': {
-        'background-color': CustomColors.BUTTON_BG
+        'background-color': CustomColor.BUTTON_BG
     },
-    [whiteLabelStyles.input]: { //eslint-disable-line
-        color: CustomColors.INPUT_TEXT
+    [themeStyles.input]: { //eslint-disable-line
+        color: CustomColor.INPUT_TEXT
     }
 };
 
 export {
-    WhitelabelStyleNames,
+    ThemeName,
     jssStyles
 };

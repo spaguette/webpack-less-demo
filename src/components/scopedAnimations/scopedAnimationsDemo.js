@@ -12,12 +12,10 @@ const files = [
     { name: 'shared/styles/animation/styles.css', source: animationsCss }
 ];
 
-function ScopedAnimationsDemo() {
-        return (
-            <Snippet files={files}>
-                <ScopedAnimations />
-            </Snippet>
-        );
-}
+const ScopedAnimationsDemo = () => (
+    <Snippet files={files}>
+        <ScopedAnimations />
+    </Snippet>
+);
 
 export default ScopedAnimationsDemo;

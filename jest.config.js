@@ -1,4 +1,7 @@
 module.exports = {
+    transform: {
+        '^.+\\.js$': 'babel-jest'
+    },
     moduleFileExtensions: ['js', 'jsx'],
     moduleDirectories: ['node_modules'],
     moduleNameMapper: {
@@ -10,6 +13,7 @@ module.exports = {
         '^sharedStyles(.*)$': '<rootDir>/src/components/shared/styles/$1',
         '^constants(.*)$': '<rootDir>/src/constants/$1'
     },
+    setupFiles: ['@babel/polyfill'],
     setupTestFrameworkScriptFile: './src/setupTests.js',
     verbose: true
 };

@@ -3,24 +3,22 @@ import PropTypes from 'prop-types';
 
 import styles from './styles.css';
 
-function Snippet({ files, children, title }) {
-    return (
-        <div className={styles.root}>
-            <hr className={styles.hr} />
-            <h2>{title}</h2>
-            <div className={styles.output}>
-                <div className={styles.fileName}>Output</div>
-                <div className={styles.outputContent}>{children}</div>
-            </div>
-            {files.map(file => (
-                <div key={file.name} className={styles.file}>
-                    <div className={styles.fileName}>{file.name}</div>
-                    <pre className={styles.pre}>{file.source}</pre>
-                </div>
-            ))}
+const Snippet = ({files, children, title}) => (
+    <div className={styles.root}>
+        <hr className={styles.hr}/>
+        <h2>{title}</h2>
+        <div className={styles.output}>
+            <div className={styles.fileName}>Output</div>
+            <div className={styles.outputContent}>{children}</div>
         </div>
-    );
-}
+        {files.map(file => (
+            <div key={file.name} className={styles.file}>
+                <div className={styles.fileName}>{file.name}</div>
+                <pre className={styles.pre}>{file.source}</pre>
+            </div>
+        ))}
+    </div>
+);
 
 Snippet.propTypes = {
     title: PropTypes.string,

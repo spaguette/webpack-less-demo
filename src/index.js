@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import jss from 'jss';
 
-import 'babel-polyfill';
+import '@babel/polyfill';
 
 import App from 'components/index.js';
 

@@ -1,0 +1,20 @@
+// This is LESS styles file from cssCompositionTheming
+
+//This contains the styles that are applied both to
+//the themed and "not-themed" input.
+.input,
+.themedInput {
+    height: 50px;
+    width: 100px;
+}
+
+//This contains the styles that are applied only to the "not-themed-input".
+.input {
+    border-radius: 5px;
+}
+
+//This contains the styles that are applied to the themed input using
+//local input className from "common" styles.
+.themedInput {
+    composes: input from "sharedStyles/themes/index.less";
+}
