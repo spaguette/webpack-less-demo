@@ -25,7 +25,6 @@ const config = {
                         loader: 'css-loader',
                         options: {
                             modules: true,
-                            minimize: process.env.NODE_ENV === 'production',
                             importLoaders: 1,
                             localIdentName: 'pref_[folder]__[local]___[hash:base64:5]'
                         }
@@ -43,8 +42,7 @@ const config = {
                     {
                         loader: 'css-loader',
                         options: {
-                            importLoaders: 2,
-                            minimize: process.env.NODE_ENV === 'production'
+                            importLoaders: 2
                         }
                     },
                     { loader: 'postcss-loader' },
@@ -62,7 +60,6 @@ const config = {
                         loader: 'css-loader',
                         options: {
                             modules: true,
-                            minimize: process.env.NODE_ENV === 'production',
                             importLoaders: 2,
                             localIdentName: 'pref_LESS_[folder]__[local]___[hash:base64:5]'
                         }
